@@ -1,0 +1,100 @@
+<style>
+ .clase1 {
+     width: 98%;
+     border-radius: 20px;
+     border: 2px rgb(67, 67, 138) solid;
+     padding: 10px;
+     margin: 1px;
+ }
+ .clase2 {
+     width: 98%;
+     border-radius: 20px;
+     border: 2px rgb(236, 44, 44) solid;
+     padding: 10px;
+     margin: 1px;
+ }
+
+</style>
+
+<script defer>
+
+window.onload = () => { 
+    let divi1=document.createElement('div');
+    divi1.id="xasync1";
+    document.body.appendChild(divi1);
+
+    let divi=document.createElement('div');
+    divi.id = "xasync";       
+    document.body.appendChild(divi);
+}
+
+    /* Ejercicio 1 */
+const alimentos=[
+    { 'vegetable':'apio','fruta':'manzana','lacteo':'leche','licor':'cerveza','harina':'pan' },
+    { 'vegetable':'tomate','fruta':'uva','lacteo':'queso','licor':'ron','harina':'arepa' },
+];
+
+function promesa(){
+    return new Promise((response, reject)=>{
+        console.log("Iniciando");
+        setTimeout(()=>{ 
+            response(alimentos);
+            reject('Ocurrio un error');
+         },3000)
+
+
+    })
+}
+
+async function datosAlmacen(){
+   
+    let datos = await promesa().then((res)=> {
+       
+        console.log(res, typeof(res));
+        //Convierte de un OBJETO  un JSON;
+        //let resp=JSON.parse(res);
+        let resp = ""; 
+       
+        for(let dato of res){
+            console.log(dato);
+            resp+=dato.vegetable+", "+dato.fruta+", "+dato.harina+" , "+dato.lacteo+" , "+dato.licor+"<br>";
+        } 
+        let div = document.getElementById('xasync1')
+        div.className = 'clase1';
+        div.innerHTML = `Ejercicio 1.<br><br> ${resp}`;
+        //res.forEach(element => {
+         //  console.log('Element ', element);
+       //});
+});
+
+}
+
+datosAlmacen();
+//let valores = []; 
+//valores = datosAlmacen();
+//console.log(valores)
+
+
+/* Ejercicio 2 */
+
+//Async / Await
+async function pawait(){
+	var promesa = new Promise(function(resolve){
+	setTimeout(() => resolve("<br><br>Async/Await Resolve...!!!")  , 5000);	
+	}); 
+		
+	return await promesa;
+}	
+
+pawait()
+    .then( resp => { 
+        //let div = document.getElementsByTagName('div')[0];
+        let div = document.getElementById('xasync');
+        div.className = "clase2";
+        div.innerHTML+="Ejercicio 2."; 
+        div.innerHTML+=resp; 
+                   }  )
+    .catch( err => console.error("Error async: ", err) );
+
+
+</script>

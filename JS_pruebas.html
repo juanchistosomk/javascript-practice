@@ -1,0 +1,346 @@
+
+
+<button onclick="alerta()" id="B" >HOLA</button>
+<form method="get" action="direcc.html" id="J" onSubmit="return valida()">
+
+<input type="text" id="texto">
+
+<input type="submit" value="enviar">
+
+
+</form>
+
+
+<script>
+
+/**************Clic a boton desde otro boton******************/
+function alerta(){
+alert('Holajk');
+}
+
+var b=document.getElementById('B'); 
+
+function valida() {
+    
+b.click();
+   
+var aa= document.getElementById("texto").value;
+ alert(aa);
+if(aa==9){
+  alert("nueve")
+	return false;
+} else {
+  return true;
+}
+}
+/**********TIPOS DE DATOS JS**************/
+const digito = 89273454;
+const palabra = "Palabra javascript";
+const grupo = ['administrativo', 'técnico','judicial'];
+var vacia;
+const decision = true;
+var variable = ['word','excel',1234, 6789];
+	console.info(typeof(digito)); // number
+	console.info(typeof(palabra)); // string
+	console.info(typeof(grupo)); // object
+	console.info(typeof(vacia)); // undefined
+	console.info(typeof(decision)); // boolean
+	
+	console.info(typeof(variable)); // object 
+	console.info(Array.isArray(variable)); // true
+	
+let stringNum = "9807";	
+console.info(typeof(Number(stringNum))); 
+let numString = 9807;	
+console.info(typeof(String(numString))); 
+let stringBool = "false";	
+console.info(typeof(Boolean(stringBool)));
+
+// NaN = No es un Numero	
+var numNo = Math.round("cero");      
+	console.log(numNo);
+	
+/*****TRUTHY y FALSY*******/	
+//POR DEFECTO siempre se considera un valor verdadero a menos que se defina como falso.
+ 
+//Verdadero
+	
+	//	if([]),if({}),if(true),if(42),if("0"), if("cadena"),if(-42),if(3.14),if(Infinity), if(new Date()) 
+	// true && "dog" retorna el segundo operando
+	// returns "dog 
+	console.log(Boolean(true),Boolean([]),Boolean(42), Boolean(1));
+ //Falso
+	//if(false),if(0),if(null),if(undefined),if(-0),if(NaN), if(""),if(0n)	
+	// false && "dog"  retorna el objeto falso
+	// ↪ false	
+	console.log(Boolean(false),Boolean(0),Boolean(null),Boolean(undefined),Boolean(numNo));   
+
+/*********OPERADORES****************/	
+let suma = 52134 + 35456;
+	let resta = 657356-78564638;
+	let mult = 3245*678;
+	let division = 89763452 / 345521;
+	let potenciacion = 554**4;
+	let raizcuadrada = Math.sqrt(81);
+	let modulo = 10001 % 5;
+	console.log("sum ",suma, "resta ", resta, "mult " , mult, "div ", division, "poten ", potenciacion, "raizcuad ", raizcuadrada, "modulo ", modulo);
+	
+// 	Comparasion
+	let comp = 23;
+	if(comp > 10)
+		comp=30;
+	if(comp == "23") //compara el valor
+		console.log("Val",comp);
+	if(comp === 30) // compara el tipo y valor
+		console.log("Tipo y val", comp);
+	if(comp !== "30")       
+		console.log("estricta dif tipo, mismo tipo no iguales devuelve true ", comp);
+	if(comp != "30")
+		console.log("dif ", comp);	
+	if(comp <= "29")
+		console.log("menor igual", comp);	
+	if(comp >= "29")
+		console.log("mayor e igual", comp);
+	
+let aa = 1;
+let bb = 1;
+	let cc =10;
+	let dd =10;
+	
+//setInterval(()=>{ console.log("aa++ ", aa++, "++bb ", ++bb, "cc--", cc--, "--dd ", --dd ); }, 7000)	
+	
+//Asignaciones	
+//x += y	x = x + y
+//x -= y	x = x - y
+//x *= y	x = x * y
+//x /= y	x = x / y	
+	
+//Switch
+	//const opcion = prompt("Ingrese número dia semana:");
+	const opcion=3;
+	//alert(opcion);
+	switch(Number(opcion)){
+		case 1: console.info("Elegiste Lunes")
+			break;
+		case 2: console.info("Elegiste Martes");
+			break;6
+		case 3: console.info("Elegiste Miercoles")
+			break;
+		case 4: console.info("Elegiste Jueves");
+			break;
+		case 5: console.info("Elegiste Viernes");
+			break;
+		case 6: console.info("Elegiste Sabado");
+			break;
+		case 7: console.info("Elegiste Domingo");
+			break;
+		default:
+			console.info("No elegiste un dia válido")
+	}
+/*******Arreglos Funciones*************/
+	
+let arreglo = [10,11,12];
+	console.log("Array inicial ",arreglo); // array inicial
+	console.log("Tamaño array length: ",arreglo.length);
+	arreglo.push(9);
+	console.log("push 9 ",arreglo);
+	arreglo.shift()
+	console.log("shift ",arreglo);
+	arreglo.pop()
+	console.log("pop ",arreglo);
+	arreglo.unshift(13);
+	console.log("unshift 13 ",arreglo);
+	console.log("indice indexOf de 12: ",arreglo.indexOf(12));
+	
+let frutas = ["Fresa","Manzana","Banano","Piña","Cereza","Guananbana","Durazno","Pera","Anon"];
+	console.log("Frutas Array ",frutas);
+	
+//Recorrer Arrays
+for(let fruta of frutas){ //recorre VALORES del objeto
+	console.log("FOR1-fruta: ", fruta);
+}	
+for(var i=0;i<frutas.length;i++){
+	console.log("FOR2-fruta ",frutas[i]);
+}	
+for(let fruta in frutas){ //recorre PROPIEDADES del objeto "indice"
+	console.log("FOR3-fruta: ", fruta);
+}
+
+	//While
+	let cont=0;
+while(cont<3){	
+	  console.log("WHILE-fruta: ", frutas[cont]);
+	  cont++;
+	  }
+	
+	//DoWhile
+cont=0;
+do{
+	console.log("DO-WHILE-fruta: ", frutas[cont]);
+	cont++;
+}while(cont<3);	
+	
+	// Objetos
+	let automovil = {
+		'Año': 2018,
+		'Modelo': 'Sedan',
+		'Marca':'Mazda',
+		'Color':'Gris',
+		'Precio':29000000
+	};
+
+	console.log("Objeto: ", automovil, " Marca ", automovil.Marca);
+
+//Funcion constructora
+	
+function AutoContruct(año, modelo, marca, color){
+	this.año=año;
+	this.modelo=modelo;
+	this.marca=marca;
+	this.color=color;
+}	
+	
+let AutoArray=[];
+for(var i=0; i<2; i++ ){
+	let año = prompt('año');
+	let modelo= prompt('modelo');
+	let marca=prompt('marca');
+	let color=prompt('color');
+	AutoArray.push(new AutoContruct (Number(año),modelo,marca,color));
+}
+	console.log(AutoArray);
+	
+for(let auto of AutoArray){
+	console.log("AutoArray: ", auto);
+}	
+	
+	
+//Filtros y ordenamientos
+	//Filter: retorna un nuevo array, se le debe pasar una expresion booleana,No cambia el array original y no ejecuta un array vacio
+let filtro = prompt('Buscar por Marca:');
+	let resultFiltro=AutoArray.filter((el)=> {
+		//return el.marca==filtro;
+		return el.marca.indexOf(filtro)>-1
+		}
+	)
+	console.log("Filter: ",resultFiltro);
+
+	//return persona.edad >= this.bajo && persona.edad <= this.alto;
+///////////////////////	
+
+let equipo = [
+	{
+  		nombre: "aaron",
+    	posicion: "developer"
+ 	 },
+  	{
+  		nombre: "beth",
+    	posicion: "ui designer"
+  	},
+  	{
+  		nombre: "cara",
+    	posicion: "developer"
+  	},
+ 	{
+  		nombre: "daniel",
+    	posicion: "content manager"
+ 	 },
+  	{
+  		nombre: "ella",
+    	posicion: "cto"
+  	},
+  	{
+  		nombre: "fin",
+    	posicion: "backend engineer"
+  	},
+  	{
+  		nombre: "george",
+    	posicion: "developer"
+  },
+
+]
+
+//let filtroE = prompt('Buscar por posicion:');
+	
+filtroEquipo = equip =>  equip.posicion.indexOf('ui')>-1;
+
+let buscaEquipo = equipo.filter(filtroEquipo);
+console.log("Filter Equipo: ",buscaEquipo);
+	
+	
+/// indexOF, se le puede especificar el indice de inicio
+// [Array o cadena].indexOf(filtroBusqueda,       		indiceDesde(opcional))
+/// search, comienza desde la posicion 0
+// 	[Array o cadena].search(filtroBusqueda)
+	
+	
+	//Map: retorna un nuevo array,No cambia el array original y no ejecuta un array vacio.Ajustar o cambiar valores
+let buscarEquipoMap = equipo.map( equip => equip.nombre );
+	console.log("Map Equipo: ",buscarEquipoMap);
+	
+const persons = [
+  {firstname : "Malcom", lastname: "Reynolds"},
+  {firstname : "Juan", lastname: "Castillo"},
+  {firstname : "Cecilia", lastname: "Hernandez"},
+  {firstname : "Alba", lastname: "López"}	
+];	
+	// JOIN: array.join(separator)
+	let resulMap = persons.map(item=>[item.firstname, item.lastname].join(" "));
+	
+	console.log("Map Persons: ", resulMap);
+	
+	//Reduce: devuelve como resultado un UNICO valor
+	// recibe 5 parametros: Acumulador, valActual, indiceIni, el array y valorInicial.
+const arrayNumbers = [1,2,3,4,5,6,7,8,9,10];
+	let resulReduce = arrayNumbers.reduce((acumulador, valActual) => {
+		return acumulador+valActual
+	});
+
+	console.log("Reduce: ", resulReduce); // 55
+	
+	//ForEach
+	const arrayNumbers2 = [1,2,3,4,5,6,7,8,9,10];
+	arrayNumbers2.forEach((item, indice , arr) => { 
+		return arr[indice]=item * 3; 
+	});
+	console.log("forEach: ", arrayNumbers2 );
+	
+	//Find: Devuelve el PRIMER valor que coincide y no sigue buscando
+	// array.find(function(currentValue, index, arr),thisValue)
+	// si NO encuentra retorna UNDEFINED
+	let resulFind = arrayNumbers.find((elemento)=> elemento>5);
+	console.log('Find: ',resulFind ); //6
+	
+	resulFind = equipo.find(elemento => elemento.posicion=='Ingeniero de datos');
+	console.log("Find2: ", resulFind ); // undefined
+	
+//Date	
+let fecha = new Date()
+const mes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+console.log("getDate: ", fecha.getFullYear(),"-",mes[fecha.getMonth()],"-",fecha.getDate() );
+
+//JSON: JSON.stringify(obj, replacer, space)  lo convierte en string para lectura del servidor.
+var div=document.createElement("div");
+div.innerHTML+=equipo;
+var atribID=document.createAttribute("id");
+	atribID.value="jsonx";
+ console.log('Equipo obj: ',equipo);
+equipo2=JSON.stringify(equipo, null, 5);
+ console.log('Equipo JSON String: ',equipo2);
+div.innerHTML+="<br><br>"+equipo2;	
+document.body.appendChild(div);
+div.setAttributeNode(atribID);	
+// first h1;
+//document.getElementsByTagName("h1")[0]	
+//addEventListener
+jsonx.addEventListener("click",function(){
+	document.getElementById("jsonx").style="background-color:#e5e5e5";
+})
+
+
+	// ARROW Funtions
+	
+	// XMLHttpRequest
+
+	
+</script>
