@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,200;1,500&display=swap');
+
+*{
+margin: 0; 
+box-sizing: border-box;   
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 200;
+    background-color: cyan;
+}
+.header{
+    background-color: #15273F;
+    color: goldenrod;
+    padding: 10px 30px;
+    width: 100%;
+    
+}
+.main-content{
+    margin: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    display: block;
+}
+
+.menu{
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    font-size: 500;
+    background-color: #ddd;
+    height: 50px;
+}
+.menu__elementos{
+    
+}
+.menu__item{
+    display: inline;
+    list-style: none;
+}
+
+.menu__item a{
+    text-decoration: none;
+    color: purple;
+    margin-right: 15px;
+}
+
+.menu__item a:hover{
+    color: peru; 
+}
+
+.menu__user{
+    display: inline-block;
+    font-size:smaller;    
+    vertical-align:super;
+    
+}
+
+.user{
+    display:block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.menu__pic{
+ background-image:url(/assets/_3dc_jk.png);
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: contain; 
+ width: 30px;
+ height: 30px;
+ border-radius: 50%;
+ border: none;
+ box-shadow: 1px 1px 1px  #333;
+ display: inline-block;
+ align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.align-center{
+
+}
+
+.seccion{
+
+}
+
+.seccion__articulo{
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+}
+article h3 {
+    padding-bottom: 10px;
+}

@@ -1,0 +1,60 @@
+<script>
+
+const num_piezas = 8;
+const prob_error = 0.24;
+let correctas = 0;
+let defectuosas = 0;
+
+const comprobarError = () => {
+    return Math.random() < prob_error;
+}
+
+console.log(comprobarError());
+
+function muestraError(){
+    throw new Error("Pieza defectuosa");
+}
+
+// Errores personalizados
+class errorPiezadefectuosa extends Error { }
+class cadenaDetenida extends Error { }
+
+
+for(let i=1; i<=num_piezas; i++){
+    const esDefectuosa = comprobarError();
+
+    //TRY Anidados
+try{
+ try{
+
+    
+    if(esDefectuosa) throw new errorPiezadefectuosa("Pieza defectuosa");
+        //muestraError(); 
+    if(i===6) throw new cadenaDetenida("Cadena detenida");
+    correctas++;
+    } catch(ex){
+
+    if(ex instanceof errorPiezadefectuosa){
+        console.log(`La pieza ${i} es defectuosa`);
+    }
+    if(ex instanceof cadenaDetenida){
+        console.log("Se ha detenido la cadena");
+        throw ex;
+    }
+
+    //console.log(ex.stack);
+    defectuosas++;
+    }  finally {
+    // Sirve por ejemplo para una conexion a BD donde sin importar
+    // si se conecta o no, CIERRE la conexion.
+    console.log(`Fabricada numero: ${i}`);
+    }
+   } catch(ex){
+       console.log("Hemos llegado aquí, Intentar arreglar la cadena");
+   } 
+}
+console.log("Fabricadas: ",num_piezas);
+console.log("Correctas: ",correctas);
+console.log("Defectuosas: ",defectuosas);
+
+</script>

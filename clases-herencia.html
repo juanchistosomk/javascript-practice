@@ -1,0 +1,61 @@
+<script>
+
+class Curso {
+    constructor(titulo, dificultad){
+        this.titulo=titulo;
+        // _ Convención para desribir que es PRIVADO
+        this._dificultad=dificultad;
+        this.leccion=[];
+    }
+
+// Getters   (se expone "dificultad" y  no _dificultad)
+get dificultad(){
+    console.log("GETTER");
+    return this._dificultad;
+}
+// Setters
+set dificultad(nuevaDificultad){
+    console.log("SETTER");
+    // Validaciones
+    if(nuevaDificultad!='Baja' && nuevaDificultad!='Media' && nuevaDificultad!='Alta')
+        throw new Error("No existe esta dificultad");
+    else
+        return this._dificultad=nuevaDificultad;
+}
+
+    // Metodos y atributos estáticos
+    static BASE_URL = "www.cursos.edu.co";
+    static cursoSede = () => {
+        console.log("Bogotá D.C.");
+    }
+    //Métodos
+    agregarleccion(leccion){
+        this.leccion.push(leccion);
+    }
+    eliminarleccion(){
+        this.leccion.pop();
+    }
+}
+
+const curso1 = new Curso('Javascript','Alta');
+const curso2 = new Curso('Typescript','Media');
+
+console.log(curso1, curso2);
+curso1.agregarleccion('Introduccion a JS');
+curso1.agregarleccion('Variables JS');
+curso2.agregarleccion('Introduccion a TS');
+curso2.agregarleccion('Variables TS');
+
+// Getter: para que no vaya directamente a la propiedad 
+curso1.dificultad='Baja';
+console.log(curso1.dificultad);
+
+//Método estático
+console.log(Curso.BASE_URL);
+console.log(Curso.cursoSede());
+
+// Probar validacion Error
+curso1.dificultad='Nada';
+console.log("Error: ", curso1.dificultad);
+
+</script>

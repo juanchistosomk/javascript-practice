@@ -1,0 +1,55 @@
+<script>
+
+// Funciones
+const resultado = saludo("Juan Carlos");
+console.info(resultado);
+
+function saludo (nombre) {
+    // Solamente se retorna un único valor
+    return `Bienvenido :>> ${nombre} `;
+}
+
+
+//---- Funciones Anónimas, Callbacks
+
+const suma = (numero1, numero2) => numero1 + numero2;
+
+const multiplicax2 = numero => numero * 2;
+
+const imprime = valor => console.log(valor);
+
+const operacion1 = (suma, imprime) => {
+    const result = suma(13454,76887);
+    return imprime(result); 
+}
+
+const operacion2 = (multiplicax2, imprime) => {
+    const result = multiplicax2(76887);
+    return imprime(result); 
+}
+
+operacion1(suma, imprime);
+operacion2(multiplicax2, imprime);
+
+
+function calPrima(tot){
+let calval=0;
+//let calPval = 1000000;
+let calPval = 10;
+let cont =0
+let ttt=0;
+  //while(ttt!=tot){
+    while(cont<=10){
+    calPval=calPval+1;
+    calval=calPval*0.19;
+    ttt=calval+calPval;
+    console.log("PRIMA, IVA:" ,calPval, calval,  ttt);
+    cont++;
+    
+  }
+ console.log("PRIMA, IVA:" , ttt, calval);
+}
+//calPrima(2965171);
+calPrima(296);
+
+</script>

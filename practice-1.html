@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos3.css"   >
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">        
+        <div class="service" id="service1">
+                <p class="titulo">API 1</p>
+                <div class="estado1">
+                    <div class="meetup">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <button class="btn-opciones">Retry</button>
+        </div>
+        <div class="service" id="service2">
+            <p class="titulo">API 2</p>
+                <div class="estado2">
+                    <div class="meetup">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <button class="btn-opciones">Retry</button>
+        </div>
+        <div class="service" id="service3">
+            <p class="titulo">API 3</p>
+            <div class="estado3">
+                <div class="meetup">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <button class="btn-opciones">Retry</button>
+        </div>
+        <div class="service" id="service4">
+            <p class="titulo">API 4</p>           
+            <div class="estado4">
+                <div class="meetup">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <p class="titulo">Respuesta valor </p>
+        </div>
+        <div class="service" id="service5">
+            <p class="titulo">Respuesta Async-Await</p>  
+
+            <div class="datosAPI">
+              
+                <code id="code1">
+1             
+                </code>
+            </div>
+            <div class="datosAPI">
+                <code id="code2">
+2
+                </code>
+            </div>
+            <div class="datosAPI">
+                <code id="code3">
+3
+                </code>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+// Platzi API
+const url1 = "https://api.escuelajs.co/api/v1/products";
+
+// NASA Api: https://api.nasa.gov/
+const url2 = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=g9NsRovtQ2xGruSJcXDaQu98VvKJGgAetiYCXkXP";
+
+// Coinpaprika: https://api.coinpaprika.com/
+const url3 = "https://api.coinpaprika.com/v1/coins/btc-bitcoin/twitter";
+const url4 = "https://api.coinpaprika.com/v1/coins/btc-bitcoin/markets"
+
+// const options3 = {
+//     method : "GET",        
+//     headers : {
+//         'api-key':'g9NsRovtQ2xGruSJcXDaQu98VvKJGgAetiYCXkXP'        
+//     }
+// };
+
+
+ let funcCurrency = (baseC, callback) => {
+ let VARI = baseC+": BITCOIN 1";
+ console.log("aaa1: ",VARI);   
+ callback(VARI);
+ return VARI; 
+ }
+
+
+async function apisData(){
+    try{
+    // Platzi
+    let data1 = await fetch(url1).then(resp => resp.json()).then(data => { console.log(data); document.getElementsByClassName('estado1')[0].innerHTML="<b>OK.</b>"; document.getElementById('code1').innerHTML=`${JSON.stringify(data)}`; return data; } ).catch(err => { console.error(err); document.getElementsByClassName('estado1')[0].innerHTML=`<b>Error: ${err}</b>`; return err; });
+    // NASA
+    let data2 = await fetch(url2).then(resp => resp.json()).then(data => { 
+        console.log(data.near_earth_objects); 
+        document.getElementsByClassName('estado2')[0].innerHTML=`<b>OK.</b>`;
+        document.getElementById('code2').innerHTML=`${JSON.stringify(data)}`; return data;
+    }).catch(err => { console.error(); document.getElementsByClassName('estado2')[0].innerHTML=`<b>Error: ${err}</b>`; return err;  });
+    // Coinpaprika bitcoin
+    let data3 = await fetch(url3).then(resp => resp.json()).then(data => {
+        console.log(data); 
+        document.getElementsByClassName('estado3')[0].innerHTML=`<b>OK.</b>`; document.getElementById('code3').innerHTML=`${JSON.stringify(data)}`;
+        return data;
+    }).catch(err => { console.error(err); document.getElementsByClassName('estado3')[0].innerHTML=`<b>Error: ${err}</b>`; return err; });
+    let data4 = await fetch(url4).then(resp => resp.json()).then(data => { console.log(data); 
+    let val = data.find(r => r.exchange_id == 'yobit');
+            funcCurrency(val.base_currency_id, funcCurrency2); 
+            document.getElementsByClassName('estado4')[0].innerHTML=`<b>OK.</b>`;          
+    return data;
+} ).catch(err => { console.error(err); document.getElementsByClassName('estado4')[0].innerHTML=`<b>Error: ${err}</b>`; return err; });
+
+    }
+    catch(ex){
+        console.error("Error");
+    }
+    return
+}
+
+apisData();
+
+function funcCurrency2(funcCurrency){
+ let VARI2 = funcCurrency.replace(/1/g,2) + " FINAL.";
+ console.log("aaa2: ",VARI2);    
+ }
+
+ 
+
+
+</script>

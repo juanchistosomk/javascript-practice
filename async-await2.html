@@ -1,0 +1,70 @@
+<script>
+
+function matPromise(valor){
+
+    if(typeof valor !== "number"){
+        return Promise.reject(`Error,  esto ${valor} no es un numero`);
+    }
+
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=> resolve({valor, result:valor*valor}), Math.random()*1000);
+    })
+}
+
+// Funcion Declarativa
+async function funcionAsyncDecla () {
+   
+    try {
+        console.log('Inicio Async');
+        let objeto= await matPromise(2);
+        console.log('promise1 :>> ', objeto.valor, objeto.result); 
+
+        objeto= await matPromise(3);
+        console.log('promise2 :>> ', objeto.valor, objeto.result); 
+
+        objeto= await matPromise("4");
+        console.log('promise3 :>> ', objeto.valor, objeto.result); 
+
+        objeto= await matPromise(5);
+        console.log('promise4 :>> ', objeto.valor, objeto.result); 
+        
+        console.log('Fin Async ');
+
+    } catch(err){
+        console.error('Error :', err);
+    }
+}
+
+funcionAsyncDecla();
+
+
+// Funcion Expresiva,  arrow function
+
+const funcionAsyncExpre =  async () => {
+   
+   try {
+       console.log('Inicio Async2');
+       let objeto= await matPromise(6);
+       console.log('promise5 :>> ', objeto.valor, objeto.result); 
+
+       objeto= await matPromise(7);
+       console.log('promise6 :>> ', objeto.valor, objeto.result); 
+
+       objeto= await matPromise(8);
+       console.log('promise7 :>> ', objeto.valor, objeto.result); 
+
+       objeto= await matPromise(9);
+       console.log('promise8 :>> ', objeto.valor, objeto.result); 
+       
+       console.log('Fin Async2 ');
+
+   } catch(err){
+       console.error('Error :', err);
+   }
+}
+
+funcionAsyncExpre();
+
+
+
+</script>

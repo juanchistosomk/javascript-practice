@@ -1,0 +1,19 @@
+ [
+    {
+        "nombre": "Juan Carlos",
+        "direccion": "Calle falsa 1234",
+        "telefono": 3118989903,
+        "ciudad": "Bogota D.C.",
+        "profesion": "Ingeniero"
+    
+    },
+    {
+        "nombre": "Maria Vargas",
+        "direccion": "Calle falsa 4346",
+        "telefono": 318000903,
+        "ciudad": "Bogota D.C.",
+        "profesion": "Doctora"
+    
+    }
+
+]
