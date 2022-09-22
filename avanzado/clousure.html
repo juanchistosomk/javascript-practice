@@ -1,0 +1,21 @@
+<script>
+// CLOUSURE se retorna una funcion lista para ejecutarse a partir de otra funcion
+
+function generarContador(valor) {
+    return () => valor+=1;   //La funcion queda Activa
+}
+
+const contador = generarContador(1);
+console.log("🚀 ~ file: clousure.js ~ line 8 ~ contador", contador());
+console.log("🚀 ~ file: clousure.js ~ line 8 ~ contador", contador());
+console.log("🚀 ~ file: clousure.js ~ line 8 ~ contador", contador());
+console.log("🚀 ~ file: clousure.js ~ line 8 ~ contador", contador());
+console.log("🚀 ~ file: clousure.js ~ line 8 ~ contador", contador());
+
+
+
+
+
+
+</script>
+

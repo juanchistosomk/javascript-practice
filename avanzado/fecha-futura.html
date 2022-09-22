@@ -1,0 +1,67 @@
+Tiempo faltante:<br>
+
+<div id = "tiempo"></div>
+<script>
+// Desde una fecha futura verificar cuantos dias, min y seg faltan
+// para llegar
+
+// Objeto Fecha
+
+function calculaTiempo(fecha){
+
+    fecha = new Date(fecha);
+    const fechaHoy = new Date();
+
+    // Transformar milisegundos en diferentes valores
+    const anioFecha = 1000 * 60 * 60 *24 * 365;  // min a mayor, milisegundos a años
+    const mesFecha = 1000 * 60 * 60 * 24 * 30
+    const diaFecha = 1000 * 60 * 60 * 24
+    const horaFecha = 1000 * 60 * 60  
+    const minFecha = 1000 * 60
+    const segundoFecha = 1000
+    //console.log(fecha, fechaHoy);
+    //const minFecha
+    if(fechaHoy.getTime() < fecha.getTime()){
+        //console.log(fechaHoy.getTime(),"----", fecha.getTime());
+        const DiftimeF = Math.abs(fecha - fechaHoy);
+        console.log(DiftimeF);
+       
+        let sobrante;
+        
+        const anio = Math.floor(DiftimeF / anioFecha);  // Los milisegundos resultantes se van convirtiendo en años, meses,etc
+        
+        sobrante = DiftimeF % anioFecha;   // RESIDUO: retira la parte entera años, y deja la parte en milisegundos
+        const mes = Math.floor(sobrante /  mesFecha);
+
+        sobrante = DiftimeF % mesFecha;
+        const dia = Math.floor(sobrante / diaFecha);
+
+        sobrante = DiftimeF % diaFecha;
+        const horas = Math.floor(sobrante / horaFecha);
+
+        sobrante = DiftimeF % horaFecha;
+        const min = Math.floor(sobrante / minFecha);
+        
+        sobrante = DiftimeF % minFecha;
+        const seg = Math.floor(sobrante / segundoFecha);
+        document.getElementById('tiempo').innerHTML = `${anio}-${mes}-${dia} ${horas}:${min}:${seg}`
+
+    } else {
+        document.getElementById('tiempo').innerHTML = `00-00-00 00:00:00`;
+    }
+
+}
+
+ setInterval(()=>{ 
+    calculaTiempo('2022-12-31 10:00:00'); 
+
+}, 1000);
+
+// console.log();
+
+
+
+
+
+
+</script>

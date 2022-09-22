@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div style="display: flex; align-items: center; justify-content: center;">    
+<h4>Buscar: &nbsp;</h4>    
+<input type="text" id="campo">
+</div>
+<br><br>
+<div id="result" style="display: flex; justify-content:center; align-items: center; gap: 25px; flex-direction: column;">
+</div>
+
+<script>
+
+const datos = [
+{
+"id": "623556c5432d65d749ffe729", 
+"nombre": "Greer Greene", 
+"empresa": "Kongene" , 
+"fecha": "1993-06-24", 
+"direccion": "17 Arion Place, Whitmer, Marshall Istands"
+},{
+"id": "623556c5b4074aa5a78685d3", 
+"nombre": "Donna Reese" , 
+"empresa": "Magnemo" , 
+"fecha": "1991-02-28", 
+"direccion": "33 Ira Court, Riviera, Arizona"
+},
+{ 
+"id": "623556c55eedd9fd7160094ai", 
+"nombre" : "Wells Phelps", 
+"empresa": "Zialactic", 
+"fecha": "1991-02-28", 
+"direccion": "17 Division Avenue, Imperial, Washington", 
+} 
+]
+
+const campo = document.getElementById("campo");
+const result = document.getElementById("result");
+
+
+campo.addEventListener('input', () => {
+    result.innerHTML = "";
+    console.log("🚀 ~ campo.addEventListener ~ campo", campo.value.toLowerCase())
+    const filtro = campo.value.toLowerCase();
+    const busqueda = datos.filter((value) => { return value.nombre.toLowerCase().indexOf(filtro) > -1  })
+    
+    const fragment = document.createDocumentFragment();
+
+    for(let dato of busqueda){
+        fragment.appendChild(generarElement(dato));
+    }
+    
+    result.appendChild(fragment);
+})
+
+
+function generarElement(datos){
+    const div = document.createElement("div");
+    const span = document.createElement("span");
+    span.style.border = "1px solid black";
+    span.style.padding = "8px";
+    span.style.width = "500px";
+    span.innerHTML = `
+    <b>id:</b> ${datos.id}<br>
+    <b>nombre:</b> ${datos.nombre}<br>
+    <b>empresa:</b> ${datos.empresa}<br>
+    <b>fecha:</b> ${datos.fecha}<br>
+    <b>direccion:</b> ${datos.direccion}<br>
+    `;
+
+    return span;
+}
+
+
+ </script>   
+</body>
+</html>

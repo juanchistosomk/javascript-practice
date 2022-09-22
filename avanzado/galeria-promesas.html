@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+const objImg2 = [
+    {"img" : "https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Cloud-Practitioner_badge.634f8a21af2e0e956ed8905a72366146ba22b74c.png"},
+    {"img" : "https://cloud.google.com/static/images/training/virtual-training_2x.jpg"},
+    {"img" : "https://app.powerbi.com/13.0.19087.45/images/errors/owl_blackeye.png"},
+    {"img" : "https://app.codesignal.com/img/logos/logo_white.svg"},
+    {"img" : "https://angular.io/assets/images/logos/angular/logo-nav@2x.png"},
+];
+
+
+const objImg = [
+    {"img" : "../assets/FRASE-GOOD.png"},
+    {"img" : "../assets/_3dc_jk.png"}, 
+    {"img" : "../assets/js.png"}, 
+    {"img" : "../assets/git.png"},   
+];
+
+
+const prom = [];
+for(const url of objImg ){
+        prom.push(fetch(url.img));
+}
+
+
+//console.log(prom);
+
+ Promise.all(prom)
+.then((res) => {
+    console.log("🚀 ~ file: galeria-promesas.html ~ line 21 ~ .then ~ res", res)
+    
+    for(let i=0; i<res.length; i++) {
+        console.log(res[i].url)
+
+    const img = document.createElement("img");
+    img.src = res[i].url;
+    document.body.appendChild(img);
+    }
+ 
+    
+})
+ 
+
+
+
+
+
+
+
+
+
+</script>

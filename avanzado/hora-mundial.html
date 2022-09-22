@@ -1,0 +1,40 @@
+<script>
+const zonasHorarias = [
+{
+"offset": -10, 
+"texto":"(UTC-10:00) Hawai", 
+},{
+"offset": -5, 
+"texto": "(UTC-05:00) Bogotá", 
+},{
+"offset": -6, 
+"texto": "(UTC-06:00) Central America", 
+},{
+"offset": -8, 
+"texto": "(UTC-09:OO) Alaska",  
+},{
+"offset": -7, 
+"texto": "(UTC-07:00) Pacific Daytight Time (US & canada)", 
+},{
+"offset": -7, 
+"texto": "(UTC-07:OO) Arizona", 
+}]; 
+
+const miliseg = 1000*60*60;
+
+for(const time of zonasHorarias){
+console.log("🚀 ~ hora-mundial: ", time.texto, calculaTime(time.offset))
+}
+
+
+function calculaTime(offset) {
+ const hoy =new Date();
+ const utc = hoy.getTime();
+ const timeZona = new Date(utc + (offset * miliseg));
+
+ return timeZona.toLocaleString(); // Muestra la fecha segun el pais actual en que se encuentre.
+ 
+} 
+
+
+</script>
